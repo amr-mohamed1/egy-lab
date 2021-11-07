@@ -1,0 +1,279 @@
+/*
+	Theme Name: IEEE Members
+	Theme Coder: Lamia Mohamed
+	Box: #055d9c;
+	Heading:#2d3035;
+	Text: white;
+	HrLine: #b9b9b9;
+*/
+:root{
+	--Box: #055d9c;
+	--Heading:#2d3035;
+	--Text: white;
+	--HrLine: #b9b9b9;
+
+}
+
+/*  Begin Of Vendor Prefix Of Body */
+*{
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    margin: 0px;
+}
+::selection {
+  color: #fff;
+  background: var(--Box);
+}
+/* End Of Vendor Prefix Of Body */
+
+.curved {
+    position: absolute;
+    background: #1b003a31;
+    height: 50vh;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 50% 0%;
+    border-bottom-right-radius: 40% 35%;
+    z-index: -1;
+  }
+
+/*Beginning of Section Android And Web Design And all Sections Contains Card*/
+.team{
+	padding-top: 30px;
+}
+.team h2{
+	font-size: 36px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	background: -webkit-linear-gradient(var(--Box),var(--Heading));
+   -webkit-background-clip: text;
+   background-clip: text;;
+   -webkit-text-fill-color: transparent;	
+   background-size:cover;
+}
+.team .card-deck{
+	margin: auto 100px
+}
+.team .card-deck .card{
+	background: var(--Box);
+	transition: 1s;
+}
+.col-md-6,.col-sm-12,.col-lg-3{
+	padding:0;
+}
+.team .card-deck .card:hover{
+	filter:grayscale(45%);
+	transform: scale(1.1);
+	z-index: 100000
+}
+.card img{
+	transition: 1s;
+}
+.image{
+	background-size: cover;
+	background-repeat: no-repeat;
+	width:100%;
+	height:100%;
+}
+.w-images{
+ 	max-height: 140px
+ }
+.h-images{
+		max-height: 196px
+ }
+.team .card-deck .card h4{
+	font-size: 17px;
+	font-family: 'Open Sans', sans-serif;
+	margin:0px 0px 10px;
+	color:var(--Heading);
+	font-weight: 700;
+}
+.team .card-deck .card p{
+	color:var(--Text);
+	font-size: 15px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	line-height: 24px;
+	padding: 7px 0px
+}
+.card-footer small{
+	font-size: 16px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	color:var(--Text);	
+}
+.card-footer{
+	background: rgb(34, 37, 42,.7)
+}
+hr{
+	height: 5px;
+	border: none;
+	margin-bottom: 70px;
+	background: linear-gradient(to right,var(--HrLine) ,var(--Box),var(--HrLine))/* #00FF6C*/
+}
+/*Ending of Section Android And Web Design And all Sections Contains Card*/
+
+/*Beginning of Section Web Design*/
+.tourism img{
+	width:25%;
+	height: 270px;
+}
+.tourism .up{
+	position: relative;
+	overflow: hidden;
+}
+.tourism .up .footer{
+	position: absolute;
+	background-color: rgba(22, 2, 207, 0.445);
+	width:99%;
+	text-align: center;
+	height: 300px;
+	cursor: pointer;
+	display:flex;
+	padding-top:130px;
+	opacity: 0;
+	transition: opacity 0.8s ease-in-out;
+}
+.container .carousel .carousel-inner .tourism .up .footer:hover{
+	opacity: 1;
+}
+.tourism .d-inline .footer small{
+	font-size: 20px;
+	color:white;
+	margin-top:130px;
+	font-weight: 700
+}
+/*Ending of Section Web Design*/
+
+/*Beginning of Section Gallary*/
+.gallary img{
+	transition: 1s;
+	border: 4px solid rgb(5, 93, 156);
+	width:300px;
+}
+.gallary img:hover{
+	filter: grayscale(100%);
+	transform: scale(1.1);
+}
+.container-fluid h2{
+	font-weight: 700;
+	font-size: 50px;
+	text-align: center;
+}
+/*Beginning of Section Gallary*/
+
+
+/* ============== Start Responsive ============== */
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+	.gallary img{
+		width:200px;
+	}
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+	.tourism img{
+		width:25%;
+		height: 200px;
+	}
+	.tourism .d-inline .footer small{
+		font-size: 15px;
+	}
+	.tourism .up .footer{
+		height: 300px;
+		padding-top:100px;
+	}
+	.card-footer small{
+		font-size: 12px
+	}
+	.gallary img{
+		width:180px;
+	}
+}
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+	.team .card-deck .card h4{
+		font-size: 13px;
+		font-weight: 700;
+	}
+	.disapper{
+		display: none;
+	}
+	.full img{
+		width:100%;
+		height:100%;
+		border-radius: 0
+	}
+	.team .card-deck .card .android, .team .card-deck .card .Embedded{
+		font-size: 12px;
+		font-weight: 700;
+		margin-bottom: 0;
+	}
+	.card-body{
+		padding: 10px 0	
+	}
+	.tourism img{
+		width:30%;
+		height: 150px;
+	}
+	.tourism .d-inline .footer small{
+		font-size: 13px;
+	}
+	.tourism .up .footer{
+		padding-top:70px;
+	}
+	.container-fluid h2{
+		font-size: 40px;
+	}
+}
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+	.tourism img{
+		width:30%;
+		height: 130px;
+	}
+ 	.gallary img{
+		width:120px;
+	}
+}
+/* ============== End Responsive ============== */
+
+
+  .slide-in-right {
+    -webkit-animation: slide-in-right 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: slide-in-right 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+
+  @-webkit-keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  

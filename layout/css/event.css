@@ -1,0 +1,393 @@
+.event p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #636570;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.event .bigdiv ul {
+    list-style: none;
+    margin-left: -30px;
+}
+
+.event .bigdiv ul li {
+    text-align: center;
+    font-size: 19px !important;
+    font-weight: 800px;
+    color: #ffffff;
+    height: 60px;
+    line-height: 50px;
+    background-color: rgb(8, 83, 168);
+    padding-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.event .bigdiv ul li:hover {
+    background-color: #9fa1af;
+    color: rgb(7, 67, 134);
+    transform: scale(0.9, 0.9);
+}
+
+
+
+
+@media (min-width:765px) {
+    .event .bigdiv ul {
+        display: flex;
+    }
+    .event .bigdiv ul li {
+        font-size: 18px;
+        flex: 1;
+    }
+    .event .bigdiv ul li:not(:last-child) {
+        margin-right: 10px;
+    }
+}
+
+.info {
+    padding: 30px 10px;
+    font-size: 20px;
+}
+
+.info h2 {
+    color: rgb(8, 83, 168);
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+.test {
+    transition: all 5s ease-in-out;
+}
+
+.sect {
+    height: 300px;
+    padding-top: 30px;
+}
+
+@media (max-width:768px) {
+    .sect {
+        height: 250px;
+        padding-top: 15px;
+    }
+}
+
+#carouselExampleIndicators, #scnd, #bruh, #robo, #thrd, #fourth, #fifth {
+    height: 350px;
+    width: 540px;
+    padding: 0;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-inner .carousel-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.CODI .ones {
+    background-image: url("../../img/IEEE(EIW)/3f6931b9-25de-46ad-b899-4dfb9c99853a.jpg");
+}
+
+.CODI .two {
+    background-image: url("../../img/IEEE(EIW)/DSC_1566.jpg");
+}
+
+.CODI .three {
+    background-image: url("../../img/IEEE(EIW)/IMG_3996.jpg");
+}
+
+.CODI .four {
+    background-image: url("../../img/IEEE(EIW)/IMG_3686.jpg");
+}
+
+.CODI .five {
+    background-image: url("../../img/IEEE(EIW)/DSC_1502.jpg");
+}
+
+.CODI .six {
+    background-image: url("../../img/IEEE(EIW)/DSC_1595.jpg");
+}
+
+.CODI .seven {
+    background-image: url("../../img/IEEE(EIW)/IMG_5592.jpg");
+}
+
+.CODI .eight {
+    background-image: url("../../img/IEEE(EIW)/IMG_3413.jpg");
+}
+
+.CODI .nine {
+    background-image: url("../../img/IEEE(EIW)/IMG_0027.jpg");
+}
+
+.CODI .ten {
+    background-image: url("../../img/IEEE(EIW)/IMG_5606.jpg");
+}
+
+.CODI .elv {
+    background-image: url("../../img/IEEE(EIW)/IMG_0060.jpg");
+}
+
+.CODI .twe {
+    background-image: url("../../img/IEEE(EIW)/IMG_5634.jpg");
+}
+
+.TTS .ones {
+    background-image: url("../../img/IEEE(COD I)/20200219_170440.jpg");
+}
+
+.TTS .two {
+    background-image: url("../../img/IEEE(COD I)/IMG_0032.JPG");
+}
+
+.TTS .three {
+    background-image: url("../../img/IEEE(COD I)/20200219_161728.JPG");
+}
+
+.TTS .four {
+    background-image: url("../../img/IEEE(COD I)/20200219_173748.JPG");
+}
+
+.TTS .five {
+    background-image: url("../../img/IEEE(COD I)/IMG_0096.JPG");
+}
+
+.TTS .six {
+    background-image: url("../../img/IEEE(COD I)/IMG_0091.JPG");
+}
+
+
+.TTS .eight {
+    background-image: url("../../img/IEEE(COD I)/IMG_0014.JPG");
+}
+
+.TTS .nine {
+    background-image: url("../../img/IEEE(COD I)/20200219_174006.JPG");
+}
+
+.TTS .ten {
+    background-image: url("../../img/IEEE(COD I)/DSC_0021.JPG");
+}
+
+.TTS .elv {
+    background-image: url("../../img/IEEE(COD I)/IMG_0081.JPG");
+}
+
+.TTS .twe {
+    background-image: url("../../img/IEEE(COD I)/f.JPG");
+}
+
+.COD .ones {
+    background-image: url("../../img/IEEE(TTS)/7.jpg");
+}
+
+.COD .two {
+    background-image: url("../../img/IEEE(TTS)/10.jpg");
+}
+
+.COD .three {
+    background-image: url("../../img/IEEE(TTS)/8.jpg");
+}
+
+.COD .four {
+    background-image: url("../../img/IEEE(TTS)/b40b5987-4152-4d3a-b03d-98f7c6778a18.jpg");
+}
+
+.COD .five {
+    background-image: url("../../img/IEEE(TTS)/DSC_6531.jpg");
+}
+
+.COD .six {
+    background-image: url("../../img/IEEE(TTS)/DSC_6551.jpg");
+}
+
+.COD .seven {
+    background-image: url("../../img/IEEE(TTS)/DSC_6606.jpg");
+}
+
+.COD .eight {
+    background-image: url("../../img/IEEE(TTS)/DSC_6662.jpg");
+}
+
+.COD .nine {
+    background-image: url("../../img/IEEE(TTS)/DSC_6889.jpg");
+}
+
+.COD .ten {
+    background-image: url("../../img/IEEE(TTS)/DSC_6665.jpg");
+}
+
+
+
+.GOC .ones {
+    background-image: url("../../img/IEEE(COD)/2ce2fd25-0009-4a4f-94b6-3e5967bdd9b4.jpg");
+}
+
+.GOC .two {
+    background-image: url("../../img/IEEE(COD)/3003a2e3-24dd-4bba-87ff-d447f486ab33.jpg");
+}
+
+.GOC .three {
+    background-image: url("../../img/IEEE(COD)/4dc235d9-4809-418d-a42b-432f43a8d2ae.jpg");
+}
+
+.GOC .four {
+    background-image: url("../../img/IEEE(COD)/4febdec7-d27e-491f-8130-2b3d6eca4800.jpg");
+}
+
+.GOC .five {
+    background-image: url("../../img/IEEE(COD)/IMG-20200917-WA0009.jpg");
+}
+
+.GOC .six {
+    background-image: url("../../img/IEEE(COD)/fada02f0-5716-4444-b0fd-2ced6bf97643.jpg");
+}
+
+.GOC .seven {
+    background-image: url("../../img/IEEE(COD)/53b0c499-5648-4420-9083-3252413bedb2.jpg");
+}
+
+.GOC .eight {
+    background-image: url("../../img/IEEE(COD)/5442ce55-cb11-4ec0-aef1-97014635d45e.jpg");
+}
+
+.GOC .nine {
+    background-image: url("../../img/IEEE(COD)/IMG-20200917-WA0057.jpg");
+}
+
+.GOC .ten {
+    background-image: url("../../img/IEEE(COD)/IMG-20200917-WA0049.jpg");
+}
+
+.GOC .elv {
+    background-image: url("../../img/IEEE(COD)/IMG-20200917-WA0054.jpg");
+}
+
+.GOC .twe {
+    background-image: url("../../img/IEEE(COD)/IMG-20200917-WA0056.jpg");
+}
+
+.SUR .ones {
+    background-image: url("../../img/IEEE(GOC)/DSC_5307.jpg");
+}
+
+.SUR .two {
+    background-image: url("../../img/IEEE(GOC)/DSC_5002.jpg");
+}
+
+.SUR .three {
+    background-image: url("../../img/IEEE(GOC)/IMG_4197 copy.jpg");
+}
+
+
+.SUR .five {
+    background-image: url("../../img/IEEE(GOC)/DSC_5303.jpg");
+}
+
+.SUR .six {
+    background-image: url("../../img/IEEE(GOC)/DSC_4944.jpg");
+}
+
+.SUR .seven {
+    background-image: url("../../img/IEEE(GOC)/IMG_3989 copy.jpg");
+}
+
+.SUR .eight {
+    background-image: url("../../img/IEEE(GOC)/IMG_4078 copy.jpg");
+}
+
+.SUR .nine {
+    background-image: url("../../img/IEEE(GOC)/IMG_4104 copy.jpg");
+}
+
+.SUR .ten {
+    background-image: url("../../img/IEEE(GOC)/IMG_4126 copy.jpg");
+}
+
+.ROB .ones {
+    background-image: url("../../img/IEEE(SUR)/1.jpg");
+}
+
+.ROB .two {
+    background-image: url("../../img/IEEE(SUR)/2.jpg");
+}
+
+.ROB .three {
+    background-image: url("../../img/IEEE(SUR)/3.jpg");
+}
+
+.ROB .four {
+    background-image: url("../../img/IEEE(SUR)/4.jpg");
+}
+
+.ROB .five {
+    background-image: url("../../img/IEEE(SUR)/5.jpg");
+}
+
+.ROB .six {
+    background-image: url("../../img/IEEE(SUR)/6.jpg");
+}
+
+.ROB .seven {
+    background-image: url("../../img/IEEE(SUR)/7.jpeg");
+}
+
+.ROB .eight {
+    background-image: url("../../img/IEEE(SUR)/8.jpeg");
+}
+
+.ROB .nine {
+    background-image: url("../../img/IEEE(SUR)/9.jpeg");
+}
+
+
+.Ignite .ones {
+    background-image: url("../../img/IEEE(Ignite)/38.jpg");
+}
+
+.Ignite .three {
+    background-image: url("../../img/IEEE(Ignite)/26.jpg");
+}
+
+.Ignite .four {
+    background-image: url("../../img/IEEE(Ignite)/22.jpg");
+}
+
+.Ignite .five {
+    background-image: url("../../img/IEEE(Ignite)/37.jpg");
+}
+
+.Ignite .six {
+    background-image: url("../../img/IEEE(Ignite)/30.jpg");
+}
+
+.Ignite .seven {
+    background-image: url("../../img/IEEE(Ignite)/35.jpg");
+}
+
+.Ignite .eight {
+    background-image: url("../../img/IEEE(Ignite)/31.jpg");
+}
+
+.Ignite .nine {
+    background-image: url("../../img/IEEE(Ignite)/24.jpg");
+}
+
+.Ignite .ten {
+    background-image: url("../../img/IEEE(Ignite)/28.jpg");
+}
+
+.hide {
+    display: none;
+}

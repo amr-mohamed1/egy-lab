@@ -1,0 +1,57 @@
+
+
+.for .sec-left
+{
+    background-color: #A0D2E4;
+   
+} 
+
+.for .sec-right
+{
+    height: max-content;
+    padding: 10px;
+    background-color: #071238;
+    
+    
+} 
+.sec-right .h1{
+    font-size: 35px;
+    font-weight: bolder;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+/*********************************************************************\
+/*right*/
+.card1{
+    background: none;
+    border:none;
+}
+.display-3 {
+    font-weight: bolder;
+    color:#071238;
+}
+.for .sec-left p {
+    font-size: 20px;
+     color:black; 
+     margin-bottom: 3rem;
+     color:#071238;
+}
+label {
+    color:#e0e0e0;
+    font-size: 18px;
+
+}
+
+/*-------*/
+.form-control{
+    background:rgba(65, 88, 117, 0.89);
+    border:none;
+    border-bottom: 3px solid rgb(92, 125, 165);
+    color: whitesmoke;
+}
+
+
+.card-img-top{
+    width:50%;
+    border:none;
+}

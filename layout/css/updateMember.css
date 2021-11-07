@@ -1,0 +1,20 @@
+body{
+    background-color:  rgba(245,246,251,255);
+
+}
+.hoster{
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px;
+    
+}
+.tableOfHosters{
+    padding: 0 20px 20px 20px;
+    
+    background-color: white;
+    margin-top: 20px;
+}
+.editbtn, .deletebtn , .profilebtn{
+    width:90%;
+
+}

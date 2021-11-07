@@ -1,0 +1,25 @@
+body{
+    background-color: rgba(245,246,250,255);
+
+}
+.mainAddForm{
+    padding-bottom: 50px;
+    margin:auto;
+align-items: center;
+}
+.addMemberMainImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+}
+.firstParagraph{
+   font-weight: 700;
+   font-size: 23px;
+}
+#HosterPhoto{
+    background: white;
+    padding: 3px;
+    border-radius: 3px;
+    border: 1px solid rgb(199, 205, 219);
+}
