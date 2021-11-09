@@ -3,7 +3,7 @@ session_start();
 ob_start(); 
 $style="addMember.css";
 include 'init.php';
-
+require './layout/topNav.php';
 // incase of exist session
 // if(isset($_SESSION['username'])){
 
@@ -48,14 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty( $_POST['name'])&& !empty($_P
                 <div class="col-md-6 mb-3 col-xs-12">
                     <label for="Name">Admin Name</label>
                     <input type="text" class="form-control"  id="Name " 
-                        placeholder="Enter User name" name="name" autocomplete="off">
+                        placeholder="Enter User name" required name="name" autocomplete="off">
                 </div>
 
                 <!--Email-->           
                 <div class="col-md-6 mb-3 col-xs-12">
                     <label for="Email">Email</label>
                     <input type="email" class="form-control" id="Email"
-                            placeholder="Enter Email" name="email" >
+                            placeholder="Enter Email" required name="email" >
                 </div><!--autocomplete="new-off"-->
 
 
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty( $_POST['name'])&& !empty($_P
                 <div class="col-md-6 mb-3 col-xs-12">
                     <label for="Password">Password</label>
                     <input type="password" class="form-control" id="Password"
-                    placeholder="Enter email password" name="password" autocomplete="new-password">
+                    placeholder="Enter email password" required name="password" autocomplete="new-password">
                 </div>
 
                 <!--position--->

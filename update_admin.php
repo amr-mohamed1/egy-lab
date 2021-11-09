@@ -3,6 +3,7 @@ ob_start();
 session_start();
 $style="addMember.css";
 include 'init.php';
+require './layout/topNav.php';
 if(isset($_GET['id']) && is_numeric($_GET['id'])){
     $id =(int)$_GET['id'];
     $admin_data=select_by_id("admins",$id);

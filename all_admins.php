@@ -1,6 +1,7 @@
 <?php       
 $style="updateMember.css";
 include "init.php";
+require './layout/topNav.php';
 $admins=getAllData('admins');
 /*if(!isset($_SESSION['username'])){
 echo "<div class='alert alert-danger'>you can not see this page id not exist</div>";

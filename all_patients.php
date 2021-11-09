@@ -1,6 +1,7 @@
 <?php       
 $style="updateMember.css";
 include "init.php";
+require './layout/topNav.php';
 $board=getAllData('patients');
 /*if(!isset($_SESSION['username'])){
 echo "<div class='alert alert-danger'>you can not see this page id not exist</div>";
@@ -83,21 +84,21 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
                                                     echo "<td>".  $boardMember['mrn'] ."</td>";
                                                     echo "<td>".  $boardMember['visit_code'] ."</td>";
                                                     echo "<td>".  $boardMember['gender'] ."</td>";
-                                                    echo "<td>".  $boardMember['reg_date'] . " / " . $boardMember['reg_time'] ."</td>";
-                                                    echo "<td>".  $boardMember['repo_date'] . " / " . $boardMember['repo_time'] ."</td>";?>
+                                                    echo "<td>".  $boardMember['reg_date'] . "</td>";
+                                                    echo "<td>".  $boardMember['repo_date'] . "</td>";?>
 
                                                         <td>
                                                             <img src="./img/Patients/<?php echo $boardMember['img'];?>" width="100" height="100">
-                                                        </td>;
+                                                        </td>
                                                         <td>
                                                         <a href="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Fwww.amr-eissa.com?id=<?php echo $boardMember['id'] ?>%2F&choe=UTF-8" download="filename">
                                                                 <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Fwww.amr-eissa.com?id=<?php echo $boardMember['id'] ?>%2F&choe=UTF-8" alt="W3Schools" width="104" height="142">
                                                                 </a>
-                                                        </td>;
+                                                        </td>
                                                             
                                                             <?php  
                                                     echo "<td>
-                                                    <a href='update_board_member.php?id=".$boardMember['id']. "'
+                                                    <a href='update_patient.php?id=".$boardMember['id']. "'
                                                     class='btn editbtn btn-primary m-2' style='display: flex;'><i class='bx bxs-edit m-1 '></i> Edit</a> " . "</td>";
                                                     echo "<td>
                                                     <a href='delete_board_member.php?id=".$boardMember['id']. "'

@@ -4,6 +4,7 @@ session_start();
 $page_name = "Admin Dashboard";
 $page="dash";
 require "init.php";
+require './layout/topNav.php';
 
 $all_users = getAllData("members")
 ?>

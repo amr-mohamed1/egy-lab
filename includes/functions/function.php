@@ -32,10 +32,10 @@ function insert_admin($name,$email,$password,$reg_state){
 
 
 
-function addPatient($patient_name,$birthday, $result, $nationality, $nation_id, $passport_num,$mrn,$visit_code,$gender,$reg_date,$reg_time,$repo_date,$repo_time,$img,$admin){
+function addPatient($patient_name,$birthday, $result, $nationality, $nation_id, $passport_num,$mrn,$visit_code,$gender,$reg_date,$repo_date,$img,$admin){
     global $con;
-    $stmt=$con->prepare("INSERT INTO patients(patient_name,birthday,result,nationality,nation_id,passport_num,mrn,visit_code,gender,reg_date,reg_time,repo_date,repo_time,img,admin_id,time)
-     VALUES (:patient_name,:birthday, :result,:nationality,:nation_id,:passport_num,:mrn,:visit_code,:gender,:reg_date,:reg_time,:repo_date,:repo_time,:img,:admin_id,:_time)" );
+    $stmt=$con->prepare("INSERT INTO patients(patient_name,birthday,result,nationality,nation_id,passport_num,mrn,visit_code,gender,reg_date,repo_date,img,admin_id,time)
+     VALUES (:patient_name,:birthday, :result,:nationality,:nation_id,:passport_num,:mrn,:visit_code,:gender,:reg_date,:repo_date,:img,:admin_id,:_time)" );
      date_default_timezone_set('Africa/Cairo');
      $_time = date("Y/m/d . h:i:s");
     $stmt->execute(array(
@@ -49,9 +49,7 @@ function addPatient($patient_name,$birthday, $result, $nationality, $nation_id, 
         ":visit_code"           =>$visit_code,
         ":gender"               =>$gender,
         ":reg_date"             =>$reg_date,
-        ":reg_time"             =>$reg_time,
         ":repo_date"            =>$repo_date,
-        ":repo_time"            =>$repo_time,
         ":img"                  =>$img,
         ":admin_id"             =>$admin,
         ":_time"                =>$_time,
@@ -62,6 +60,25 @@ function addPatient($patient_name,$birthday, $result, $nationality, $nation_id, 
     </script>";
     header("Refresh:3;url=all_patients.php"); 
 }
+
+
+  /*
+   ==========================  
+        update_member
+   ==========================
+*/
+function update_patient($patient_name,$birthday, $result, $nation, $nation_id, $passport_num,$MRN,$visit_code,$gender,$reg_date,$repo_date,$avatar,$admin,$id){
+    global $con;
+   $stmt= $con->prepare ("UPDATE patients SET `patient_name`=?,`birthday`=?,`result`=?,`nationality`=?,`nation_id`=?,`passport_num`=?,`mrn`=?, `visit_code`=?,`gender`=?,`reg_date`=?,`repo_date`=?,`img`=?,`admin`=? WHERE `id`=?");
+   $stmt ->execute(array(
+       $patient_name, $birthday,$result, $result,$nation,$nation_id,$passport_num,$MRN,$visit_code, $gender,$reg_date, $repo_date, $avatar,$admin, $id));
+       echo "
+       <script>
+           toastr.success('Great ,successfully: Patient update .')
+       </script>";
+       header("Refresh:2;url=all_patients.php"); 
+}
+
 
 /*
 ==========================
@@ -157,87 +174,6 @@ function count_data($colume,$databname){
 
 /*IMPORTANT !!! SN = 636f6465206279203a20416d722d4d6f68616d65642d4569737361 */
 
-
-
-/*=====================start_members_function=============================*/
-/*
-==========================  
-  insert_member
-==========================
-*/
-function insert_member($user_name,$email,$birthday,$phone,
-$commity,$season,$college_name,$college_year,$about,$img,$old_member,$facebook,$linkedIn  )
-{
-
-global $con;
- $stmt=$con->prepare("INSERT INTO 
-        members(`name`,`email`,`birthday`,`phone`,`commity`,`season`,`college-name`, `college-year`,`about`,`img`,`old-member`,`facebook`,`linkedIn` )
-        VALUES (:zuser,:zemail,:zbirthday,:zphone,:zcommity,:zseason,:zcollege_name, :zcollege_year,:zabout,:zimg,:zold_member,:zfacebook,:zlinkedIn) ");
-        $stmt->execute(array(
-            ":zuser"        =>$user_name, 
-            ":zemail"       =>$email,
-            ":zbirthday"    =>$birthday, 
-            ":zphone"       =>$phone, 
-            ":zcommity"     =>$commity, 
-            ":zseason"      =>$season,
-            ":zcollege_name"=>$college_name,
-            ":zcollege_year"=>$college_year,
-            ":zabout"       =>$about, 
-            ":zimg"         =>$img,
-            ":zold_member"   =>$old_member, 
-            ":zfacebook"    =>$facebook, 
-            ":zlinkedIn"    =>$linkedIn 
-        ));
-        echo "
-        <script>
-            toastr.success('Great ,successfully: member  added .')
-        </script>";
-        header("Refresh:3;url=all_members.php"); 
-}
-function insert_board_member($name,$email,$password,$birthday,$phone,$position,
-$commity,$season,$college_name,$college_year,$about,$img,$old_member,$facebook,$linkedIn  )
-{
-
-global $con;
- $stmt=$con->prepare("INSERT INTO 
-        board(`name`,`email`,`password`,`birthday`,`phone`,`position`,`commity`,`season`,`college_name`, `college_year`,`about`,`img`,`old_member`,`facebook`,`linkedIn` )
-        VALUES (:zuser,:zemail,:zpassword,:zbirthday,:zphone,:zposition,:zcommity,:zseason,:zcollege_name, :zcollege_year,:zabout,:zimg,:zold_member,:zfacebook,:zlinkedIn) ");
-        $stmt->execute(array(
-            ":zuser"        =>$name, 
-            ":zemail"       =>$email,
-            ":zpassword"    =>$password,
-            ":zbirthday"    =>$birthday, 
-            ":zphone"       =>$phone, 
-            ":zposition"    =>$position,
-            ":zcommity"     =>$commity, 
-            ":zseason"      =>$season,
-            ":zcollege_name"=>$college_name,
-            ":zcollege_year"=>$college_year,
-            ":zabout"       =>$about, 
-            ":zimg"         =>$img,
-            ":zold_member"   =>$old_member, 
-            ":zfacebook"    =>$facebook, 
-            ":zlinkedIn"    =>$linkedIn 
-        ));
-        echo "
-            <script>
-                toastr.success('Great ,successfully: member  added .')
-            </script>";
-            header("Refresh:3;url=all_board.php"); 
-}
-
-/*
-==========================  
-  select_member_by_id
-==========================
-*/
-function select_member_by_id($table ,$value_field){
-    global $con;
-    $stmt1       = $con->prepare("SELECT * FROM $table where `id`=?") ;
-    $stmt1       ->execute(array($value_field));
-    $row   =$stmt1 ->fetch();
-    return $row;
-  }
   /*
 ==========================  
   select_by_id
@@ -250,22 +186,7 @@ function select_by_id($table ,$value_field){
     $row   =$stmt1 ->fetch();
     return $row;
   }
-  /*
-   ==========================  
-        update_member
-   ==========================
-*/
-function update_member($user_name, $email,$birthday, $phone,$commity, $season,$college_name,  $college_year,$about, $img,$old_member, $facebook, $linkedIn, $id){
-    global $con;
-   $stmt= $con->prepare ("UPDATE members SET `name`=?,`email`=?,`birthday`=?,`phone`=?,`commity`=?,`season`=?,`college-name`=?, `college-year`=?,`about`=?,`img`=?,`old-member`=?,`facebook`=?,`linkedIn`=? WHERE `id`=?");
-   $stmt ->execute(array(
-       $user_name, $email,$birthday, $phone,$commity,$season,$college_name,  $college_year,$about, $img,$old_member, $facebook, $linkedIn, $id));
-       echo "
-       <script>
-           toastr.success('Great ,successfully: member update .')
-       </script>";
-       header("Refresh:2;url=all_members.php"); 
-}
+
   /*
    ==========================  
         update_board
