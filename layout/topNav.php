@@ -17,10 +17,12 @@
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="admin_dash.php">Dashboard</a>
+                        <?php if($_SESSION['role'] == "1"){  ?>
                         <a class="dropdown-item" href="all_admins.php">All Admins</a>
+                        <?php } ?>
                         <a class="dropdown-item" href="all_patients.php">All Patients</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="logout.php">Logout</a>
                     </div>
                 </li>
             </ul>

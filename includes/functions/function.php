@@ -32,12 +32,26 @@ function insert_admin($name,$email,$password,$reg_state){
 
 
 
+/*
+==========================
+  get all data with id
+==========================
+*/
+
+function get_last_patient(){
+    global $con;
+    $stmt = $con->prepare("SELECT * FROM patients ORDER BY id DESC LIMIT 1");
+    $stmt->execute();
+    $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $rows;
+}
+
 function addPatient($patient_name,$birthday, $result, $nationality, $nation_id, $passport_num,$mrn,$visit_code,$gender,$reg_date,$repo_date,$img,$admin){
     global $con;
     $stmt=$con->prepare("INSERT INTO patients(patient_name,birthday,result,nationality,nation_id,passport_num,mrn,visit_code,gender,reg_date,repo_date,img,admin_id,time)
      VALUES (:patient_name,:birthday, :result,:nationality,:nation_id,:passport_num,:mrn,:visit_code,:gender,:reg_date,:repo_date,:img,:admin_id,:_time)" );
      date_default_timezone_set('Africa/Cairo');
-     $_time = date("Y/m/d . h:i:s");
+     $_time = date("Y/m/d . H:i:s");
     $stmt->execute(array(
         ":patient_name"         =>$patient_name,
         ":birthday"             =>$birthday,
@@ -67,11 +81,10 @@ function addPatient($patient_name,$birthday, $result, $nationality, $nation_id, 
         update_member
    ==========================
 */
-function update_patient($patient_name,$birthday, $result, $nation, $nation_id, $passport_num,$MRN,$visit_code,$gender,$reg_date,$repo_date,$avatar,$admin,$id){
+function update_patient($patient_name,$birthday, $result, $nationality, $nation_id, $passport_num,$MRN,$visit_code,$gender,$reg_date,$repo_date,$avatar,$admin,$id){
     global $con;
-   $stmt= $con->prepare ("UPDATE patients SET `patient_name`=?,`birthday`=?,`result`=?,`nationality`=?,`nation_id`=?,`passport_num`=?,`mrn`=?, `visit_code`=?,`gender`=?,`reg_date`=?,`repo_date`=?,`img`=?,`admin`=? WHERE `id`=?");
-   $stmt ->execute(array(
-       $patient_name, $birthday,$result, $result,$nation,$nation_id,$passport_num,$MRN,$visit_code, $gender,$reg_date, $repo_date, $avatar,$admin, $id));
+   $stmt= $con->prepare ("UPDATE patients SET patient_name=?,birthday=?,result=?,nationality=?,nation_id=?,passport_num=?,mrn=?, visit_code=?,gender=?,reg_date=?,repo_date=?,img=?,admin_id=? WHERE id=?");
+   $stmt ->execute(array($patient_name, $birthday,$result,$nationality,$nation_id,$passport_num,$MRN,$visit_code, $gender,$reg_date, $repo_date, $avatar,$admin, $id));
        echo "
        <script>
            toastr.success('Great ,successfully: Patient update .')
@@ -88,7 +101,7 @@ function update_patient($patient_name,$birthday, $result, $nation, $nation_id, $
 
 function check_user ( $email , $hased){
     global $con;
-    $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt = $con->prepare("SELECT * FROM admins WHERE email = ?");
     $stmt->execute(array($email));
     $rows = $stmt->fetch(PDO::FETCH_ASSOC);
     $count = $stmt->rowCount();
@@ -97,17 +110,13 @@ function check_user ( $email , $hased){
             $_SESSION['userid']    = $rows['id'];
             $_SESSION['username']  = $rows['username'];
             $_SESSION['useremail'] = $rows['email'];
-            $_SESSION['reg_state'] = $rows['reg_state'];
+            $_SESSION['role'] = $rows['role'];
             echo "
             <script>
                 toastr.success('Welcome Back " . $_SESSION['username'] . " .')
             </script>";
 
-            if($rows['reg_state'] == "0"){
-                header("Refresh:3;url=user_home.php");
-            }else{
-                header("Refresh:3;url=seller_profile.php");
-            }
+                header("Refresh:3;url=admin_dash.php");
 
         }
         else{
@@ -187,56 +196,6 @@ function select_by_id($table ,$value_field){
     return $row;
   }
 
-  /*
-   ==========================  
-        update_board
-   ==========================
-*/
-
-function update_board_member($name, $email,$password,$birthday, $phone, $position,$commity, $season,$college_name,  $college_year,$about, $img,$old_member, $facebook, $linkedIn, $id){
-    global $con;
-   $stmt= $con->prepare ("UPDATE board SET `name`=?,`email`=?,`password`=?,`birthday`=?,`phone`=?,`position`=?,`commity`=?,`season`=?,`college_name`=?, `college_year`=?,`about`=?,`img`=?,`old_member`=?,`facebook`=?,`linkedIn`=? WHERE `id`=?");
-   $stmt ->execute(array(
-       $name, $email,$password,$birthday, $phone, $position,$commity,$season,$college_name,  $college_year,$about, $img,$old_member, $facebook, $linkedIn, $id));
-       echo "
-       <script>
-           toastr.success('Great ,successfully: member update .')
-       </script>";
-       header("Refresh:2;url=all_board.php"); 
-}
-
-/*
-   ==========================  
-        delete_by_id
-   ==========================
-*/
-function delete_by_id($table ,$id_user){
-    global $con;
-     $stmt1 = $con -> prepare("DELETE FROM $table WHERE `id`=:id");
-     $stmt1->bindParam(":id",$id_user);
-     $stmt1->execute();
-   }
-/*=====================end_members_function=============================*/
-/*=====================start event functions============================*/
-
-/*
-   ==========================  
-        edit event 
-   ==========================
-*/
-function editEvent($eventName,$eventSeason, $eventYear, $eventImg, $eventDescription, $eventLink,$id){
-    global $con;
-    $stmt=$con->prepare ("UPDATE events SET `name`=?,`season`=?, `year`=?,`img`=?,`description`=?,`link`=? WHERE `id`=?");
-    $stmt->execute(array($eventName,$eventSeason, $eventYear, $eventImg, $eventDescription, $eventLink,$id));
-    
-    echo "
-    <script>
-        toastr.success('Great ,successfully: Edited event .')
-    </script>";
-    header("Refresh:3;url=all_events.php"); 
-
-}
-
 /*
    ==========================  
         edit admin 
@@ -252,80 +211,3 @@ function editAdmin($name,$email, $hashed, $reg_state,$id){
     </script>";
     header("Refresh:3;url=all_admins.php"); 
 }
-
-/*
-   ==========================  
-       count members from database by commite name 
-   ==========================
-*/
-function count_comittee_members($colume,$databname,$commity){
-    global $con;
-    $stmt = $con->prepare("SELECT COUNT($colume) From $databname WHERE commity = ?");
-    $stmt->execute(array($commity));
-    $rows = $stmt->fetchColumn();
-    return $rows;
-}
-
-
-/*
-   ==========================  
-       get the head and the vice of the comittee
-   ==========================
-*/
-function select_head_vice($databname,$commity,$position){
-    global $con;
-    $stmt = $con->prepare("SELECT * From $databname WHERE commity = ? AND position=?");
-    $stmt->execute(array($commity,$position));
-    $row   =$stmt ->fetch();
-    return $row;
-}
-
-/*
-==========================
-    get members by committe name
-==========================
-*/
-
-function membersBy_comm($commity){
-    global $con;
-    $stmt = $con->prepare("SELECT * FROM members WHERE commity=?");
-    $stmt->execute(array($commity));
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $rows;
-}
-
-/*
-==========================  
-  select All Admins
-==========================
-*/
-function select_Admins(){
-    global $con;
-    $stmt = $con->prepare("SELECT * FROM admins");
-    $stmt->execute();
-    $row   =$stmt ->fetchAll(PDO::FETCH_ASSOC);
-    return $row;
-  }
-
-  /*
-==========================  
-count Rows from Database By/ Amr Mohamed
-==========================
-*/
-
-function count_users($colume,$databname){
-    global $con;
-    $stmt = $con->prepare("SELECT COUNT($colume) From $databname");
-    $stmt->execute();
-    $rows = $stmt->fetchColumn();
-    return $rows;
-}
-
-
-/*
-
-    date_default_timezone_set('Africa/Cairo');
-    $_time = date("Y/m/d . h:i:s");
-
-
-*/

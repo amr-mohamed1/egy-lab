@@ -21,6 +21,15 @@ body{
     font-size: 25px;
     padding: 10px 0;
 }
+@media(max-width:779px){
+    .col-6{
+        padding: 20px 10px !important;
+        background-color: #f5fcff !important;
+    }
+    .data img{
+        width: 60% !important;
+    }
+}
 .data{
     background-color: #fff;
     margin-top: 50px;

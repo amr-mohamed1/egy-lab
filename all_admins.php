@@ -1,6 +1,9 @@
 <?php       
+ob_start();
+session_start();
 $style="updateMember.css";
 include "init.php";
+if(isset($_SESSION['role']) && $_SESSION['role'] == "1"){
 require './layout/topNav.php';
 $admins=getAllData('admins');
 /*if(!isset($_SESSION['username'])){
@@ -69,7 +72,7 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
                                                 <a href='update_admin.php?id=".$admin_data['id']."'
                                                 class='btn editbtn btn-primary m-2'><i class='bx bxs-edit m-1 '></i> Edit</a> " . "</td>";
                                                 echo "<td>
-                                                <a href='delete_admin.php?id=".$admin_data['id']."'
+                                                <a href='delete.php?from=admins&id=".$admin_data['id']."'
                                                 class='btn deletebtn btn-danger m-2'><i class='bx bxs-user-minus m-1'></i> Delete</a> " . "</td>";
                                 
                                             echo "</td>";?>
@@ -91,3 +94,8 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
 
 <?php
 require_once "./includes/template/footer.php";
+
+}else{
+    header("Location:siggin.php");
+}
+ob_end_flush();

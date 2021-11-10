@@ -3,6 +3,7 @@ session_start();
 ob_start(); 
 $style="addMember.css";
 include 'init.php';
+if(isset($_SESSION['role']) && $_SESSION['role'] == "1" ){
 require './layout/topNav.php';
 // incase of exist session
 // if(isset($_SESSION['username'])){
@@ -88,4 +89,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty( $_POST['name'])&& !empty($_P
         </div>
     <?php
     require_once "./includes/template/footer.php";
-    ob_end_flush();?>
+  }else{
+    header("Location:siggin.php");
+  }
+  ob_end_flush();
+    ?>
