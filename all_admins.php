@@ -61,11 +61,9 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
                                                     echo "<td>".  $admin_data['email']      	."</td>";
 
                                                     if($admin_data['role'] == 0){
-                                                        echo "<td>". "Height Board" ."</td>";
+                                                        echo "<td>". "Admin" ."</td>";
                                                     }elseif($admin_data['role'] == 1){
                                                         echo "<td>". "Super Admin" ."</td>";
-                                                    }elseif($admin_data['role'] == 2){
-                                                        echo "<td>". "Admin" ."</td>";
                                                     }
                                                     
                                                 echo "<td>

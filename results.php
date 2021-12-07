@@ -9,6 +9,9 @@ $user_id = explode("-",$id);
 
     $table="patients";
     $patient_data=select_by_id($table ,$user_id[1]);
+    if(!$patient_data){
+        header("Location:index.php");
+    }else{
 
 ?>
 
@@ -42,7 +45,9 @@ $user_id = explode("-",$id);
             </div>
             <div class="col-md-4 col-6 mb-5">
                 <h3>Date Of Birth : </h3>
-                <p><?php echo $patient_data["birthday"];?></p>
+                
+                <p><?php
+                echo date("d/m/Y",strtotime($patient_data["birthday"]));?></p>
             </div>
             <div class="col-md-4 col-6 mb-5">
                 <h3>Passport Num : </h3>
@@ -101,6 +106,7 @@ if(window.innerWidth <= 775){
 }).resize();</script>
 <?php 
 require_once "./includes/template/footer.php";
+    }
 }else{
     header("Location:index.php");
 }

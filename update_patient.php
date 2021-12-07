@@ -36,10 +36,10 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
                 toastr.error('Sorry name or result or nation Should be string only......!')
             </script>";
           }
-          else if(!is_numeric($_POST["nation_id"]) || !is_numeric($_POST["passport_num"])){
+          else if(!is_numeric($_POST["nation_id"])){
             echo "
             <script>
-                toastr.error('Sorry nation_id or passport_num Should be Numeric only......!')
+                toastr.error('Sorry nation_id Should be Numeric only......!')
             </script>";
           }
           else if(!is_numeric($_POST["MRN"]) || !is_numeric($_POST["visit_code"])){
@@ -48,7 +48,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
                 toastr.error('Sorry MRN or Visit Code Should be Numeric only......!')
             </script>";
           }
-          else if( strlen((string)$_POST["MRN"])<3){
+          else if( strlen((string)$_POST["MRN"])<4){
             echo "
             <script>
                 toastr.error('Sorry MRN Should be more than 3 Number......!')
@@ -88,7 +88,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
         $visit_code             =$_POST['visit_code'];
         $reg_date               =$_POST['reg_date'];
         $repo_date              =$_POST['repo_date'];
-        $admin                  = 1;
+        $admin                  = $_SESSION['userid'];
 
         $avatar_name            = $_FILES["user_img"]["name"];
         $size                   = $_FILES["user_img"]["size"];
@@ -135,8 +135,6 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
         <p class="firstParagraph text-center">Welcome to Event page </p>
         <p class="secondParagraph text-center">From this page you can edit event to dashboard</p>
         <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
-
             <!--Event Name-->
             <div class="row">
 
@@ -183,7 +181,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
                 <!--Passport Num-->
                 <div class=" col-md-6 mb-3">
                     <label for="passport_num">Passport Num </label>
-                    <input type="number" class="form-control"  id="passport_num " 
+                    <input type="text" class="form-control"  id="passport_num " 
                         placeholder="Enter Passport Num " value="<?php echo $patient_data['passport_num'];?>" autocomplete="off"
                         name="passport_num">
                 </div>  
@@ -195,7 +193,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
                     <div style="width: 100%;" class="input-group-prepend">
                       <div class="input-group-text">N1152</div>
                       <input type="number" class="form-control"  id="MRN" 
-                          placeholder="Enter MRN" max="999" value="<?php echo $patient_data['mrn'];?>" autocomplete="off"
+                          placeholder="Enter MRN" max="9999" value="<?php echo $patient_data['mrn'];?>" autocomplete="off"
                           name="MRN">
                     </div>
                     </div>

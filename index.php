@@ -39,11 +39,6 @@
 
 <h3 style="font-size: 30px;text-align: center;padding-top: 30px;font-weight: 700;">Please Scan Your QR Code To Get Your Results</h3>
 <img style="display: block;margin: auto;width:70%" src="img/scan.gif" alt="scan">
-  
-<?php 
-$date = date_create('2000-01-01');
-echo date_format($date, 'd-Y-m H:i:s');
-?>
 
   <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

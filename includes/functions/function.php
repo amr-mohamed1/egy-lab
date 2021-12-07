@@ -70,7 +70,7 @@ function addPatient($patient_name,$birthday, $result, $nationality, $nation_id, 
     ));
     echo "
     <script>
-        toastr.success('Great ,successfully: Added event .')
+        toastr.success('Great ,successfully: Added to Patients .')
     </script>";
     header("Refresh:3;url=all_patients.php"); 
 }
@@ -203,7 +203,7 @@ function select_by_id($table ,$value_field){
 */
 function editAdmin($name,$email, $hashed, $reg_state,$id){
     global $con;
-    $stmt=$con->prepare ("UPDATE admins SET `name`=?,`email`=?, `password`=?,`role`=? WHERE `id`=?");
+    $stmt=$con->prepare ("UPDATE admins SET `username`=?,`email`=?, `password`=?,`role`=? WHERE `id`=?");
     $stmt->execute(array($name,$email, $hashed, $reg_state,$id));
     echo "
     <script>

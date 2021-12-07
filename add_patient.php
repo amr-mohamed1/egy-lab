@@ -33,10 +33,10 @@ $last = get_last_patient();
                 toastr.error('Sorry name or result or nation Should be string only......!')
             </script>";
           }
-          else if(!is_numeric($_POST["nation_id"]) || !is_numeric($_POST["passport_num"])){
+          else if(!is_numeric($_POST["nation_id"])){
             echo "
             <script>
-                toastr.error('Sorry nation_id or passport_num Should be Numeric only......!')
+                toastr.error('Sorry nation_id Should be Numeric only......!')
             </script>";
           }
           else if(!is_numeric($_POST["MRN"]) || !is_numeric($_POST["visit_code"])){
@@ -45,7 +45,7 @@ $last = get_last_patient();
                 toastr.error('Sorry MRN or Visit Code Should be Numeric only......!')
             </script>";
           }
-          else if( strlen((string)$_POST["MRN"])<3){
+          else if( strlen((string)$_POST["MRN"])<4){
             echo "
             <script>
                 toastr.error('Sorry MRN Should be more than 3 Number......!')
@@ -75,7 +75,7 @@ $last = get_last_patient();
             $gender                 =FILTER_VAR($_POST['gender'],FILTER_SANITIZE_STRING);
             $reg_date               =$_POST['reg_date'];
             $repo_date              =$_POST['repo_date'];
-            $admin                  = 1;
+            $admin                  = $_SESSION['userid'];
 
 
 
@@ -89,10 +89,12 @@ $last = get_last_patient();
             @$extention             = strtolower(end(explode(".",$avatar_name)));
 
             if(in_array($extention,$ext_allowed)){
-                $avatar = rand(0,1000) . "_" . $patient_name ;
+                $avatar = "patient" . "_" . rand(0,100000) . "." . $extention ;
                 
                 $destination = "img/Patients/" . $avatar ;
         
+
+                echo $extention;
                 
                 /*check if info already added*/
         
@@ -112,7 +114,7 @@ $last = get_last_patient();
 
 
                 addPatient($patient_name,$birthday, $result, $nation, $nation_id, $passport_num,$MRN,$visit_code,$gender,$reg_date,$repo_date,$avatar,$admin);
-                    move_uploaded_file($tmp_name,$destination);
+                move_uploaded_file($tmp_name,$destination);
 
 
 
@@ -187,7 +189,7 @@ $last = get_last_patient();
                 <!--Passport Num-->
                 <div class=" col-md-6 mb-3">
                     <label for="passport_num">Passport Num </label>
-                    <input type="number" class="form-control"  id="passport_num " 
+                    <input type="text" class="form-control"  id="passport_num " 
                         placeholder="Enter Passport Num " required  autocomplete="off"
                         name="passport_num">
                 </div>  
@@ -199,7 +201,7 @@ $last = get_last_patient();
                     <div style="width: 100%;" class="input-group-prepend">
                       <div class="input-group-text">N1152</div>
                       <input type="number" class="form-control" value="<?php echo $last["mrn"]+1;?>" id="MRN" 
-                          placeholder="Enter MRN" required  max="999" autocomplete="off"
+                          placeholder="Enter MRN" required  max="9999" autocomplete="off"
                           name="MRN">
                     </div>
                     </div>

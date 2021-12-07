@@ -16,9 +16,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $password               =FILTER_VAR($_POST['password'],FILTER_SANITIZE_STRING);
             $hashed                 =sha1($password);
             $reg_state              =FILTER_VAR($_POST['reg_state'],FILTER_SANITIZE_NUMBER_INT);
-            $admin_id              =FILTER_VAR($_POST['id'],FILTER_SANITIZE_NUMBER_INT);
 
-            editAdmin($name,$email, $hashed, $reg_state,$admin_id);
+            editAdmin($name,$email, $hashed, $reg_state,$id);
 
     }
     
@@ -38,7 +37,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         <p class="firstParagraph text-center">Welcome to Admin page </p>
         <p class="secondParagraph text-center">From this page you can edit Admin Data to dashboard</p>
         <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" >
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
 
             <!--Event Name-->
             <div class="row">
