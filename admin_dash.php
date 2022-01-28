@@ -111,6 +111,7 @@ $all_users = getAllData("members")
                                               <th>Reporting Date</th>
                                               <th>Image</th>               
                                               <th>QR Code</th>               
+                                              <th>PDF Page</th>               
                                               <th>Update</th>               
                                               <th>Delete</th> 
                                             </tr>
@@ -129,7 +130,8 @@ $all_users = getAllData("members")
                                               <th>Registration Date</th>
                                               <th>Reporting Date</th>
                                               <th>Image</th>    
-                                              <th>QR Code</th>                
+                                              <th>QR Code</th>      
+                                              <th>PDF Page</th>                         
                                               <th>Update</th>                          
                                               <th>Delete</th> 
                                               </tr>            
@@ -143,7 +145,7 @@ $all_users = getAllData("members")
                                                     echo "<td>".  $patients_data['nationality']      	."</td>";
                                                     echo "<td>".  $patients_data['nation_id']    	."</td>";
                                                     echo "<td>".  $patients_data['passport_num']  	   	."</td>";
-                                                    echo "<td>". "N1152" . $patients_data['mrn'] ."</td>";
+                                                    echo "<td>". "N115" . $patients_data['mrn'] ."</td>";
                                                     echo "<td>". "N2021102405" .$patients_data['visit_code'] ."</td>";
                                                     echo "<td>".  $patients_data['gender'] ."</td>";
                                                     echo "<td>".  $patients_data['reg_date'] . "</td>";
@@ -153,11 +155,16 @@ $all_users = getAllData("members")
                                                             <img src="./img/Patients/<?php echo $patients_data['img'];?>" width="100" height="100">
                                                         </td>
                                                         <td>
-                                                        <a href="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Fwww.amr-eissa.com?id=<?php echo $patients_data['id'] ?>%2F&choe=UTF-8" download="filename">
-                                                                <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Fwww.amr-eissa.com?id=<?php echo $patients_data['id'] ?>%2F&choe=UTF-8" alt="W3Schools" width="104" height="142">
-                                                                </a>
+                                                            <a href="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Felsalamlab.com/results.php?id=<?php echo rand(0,1000000)."-".$patients_data['id']."-".rand(0,1000).rand(0,100);?>%2F&choe=UTF-8" download="filename">
+                                                                <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Felsalamlab.com/results.php?id=<?php echo rand(0,1000000)."-".$patients_data['id']."-".rand(0,1000).rand(0,100);?>%2F&choe=UTF-8" alt="W3Schools" width="104" height="142">
+                                                            </a>
                                                         </td>
-                                                            
+
+                                                        <td>
+                                                            <a href='patient_data.php?id=<?php echo rand(0,1000000)."-".$patients_data['id']."-".rand(0,1000).rand(0,100);?>'
+                                                            class='btn editbtn btn-primary m-2' style='display: flex;'><i class='bx bxs-edit m-1 '></i> PDF Page</a>                                                        
+                                                        </td>
+                                                                
                                                             <?php  
                                                     echo "<td>
                                                     <a href='update_patient.php?id=".$patients_data['id']. "'

@@ -18,7 +18,7 @@ $user_id = explode("-",$id);
 <div class="container pb-5">
     <div class="row">
         <div style="margin: auto;" class="col-md-6">
-            <img style="display: block;width: 70%;margin: auto;margin-bottom: 30px;" src="img/misr-logo.jpg" alt="logo">
+            <img style="display: block;width: 70%;margin: auto;margin-bottom: 30px;" src="img/data/lab 1 v2.png" alt="logo">
             <img style="display: block;width: 35%;margin: auto;border-radius: 50%;" src="img/Patients/<?php echo $patient_data["img"];?>" alt="patient">
         </div>
         <div class="col-md-12 mt-5">
@@ -39,10 +39,10 @@ $user_id = explode("-",$id);
                 <h3>MRN : </h3>
                 <p>N1152<?php echo $patient_data["mrn"];?></p>
             </div>
-            <div class="col-md-4 col-6 mb-5">
+            <!-- <div class="col-md-4 col-6 mb-5">
                 <h3>National Num : </h3>
                 <p><?php echo $patient_data["nation_id"];?></p>
-            </div>
+            </div> -->
             <div class="col-md-4 col-6 mb-5">
                 <h3>Date Of Birth : </h3>
                 
@@ -86,9 +86,9 @@ $user_id = explode("-",$id);
 
     <h3 class="copy_rights">
         Test Performed By : <br>
-        Misr International Lab - Cairo - Egypt
+        El Salam Lab - Egypt
     </h3>
-    <img src="img/iso.png" alt="iso">
+    <img src="img/data/1.png" alt="iso">
 
     </div>
 </div>

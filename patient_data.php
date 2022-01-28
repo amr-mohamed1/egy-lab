@@ -61,32 +61,45 @@ $user_id = explode("-",$id);
                     <span>Gender &nbsp;&nbsp;&nbsp; :</span> <p><?php echo $patient_data["gender"];?></p>
                     </div>
                     <div class="col-md-6 nation">
-                    <span>Nation ID &nbsp;&nbsp;&nbsp; :</span> <p><?php echo $patient_data["nation_id"];?></p>
+                    <span>DOB/Age &nbsp;&nbsp;&nbsp; :</span> <p><?php
+                echo date("d/m/Y",strtotime($patient_data["birthday"]));
+                
+                $dateOfBirth = $patient_data["birthday"];
+$today = date("Y-m-d");
+$diff = date_diff(date_create($dateOfBirth), date_create($today));
+echo '( '.$diff->format('%y') . ' Y )';
+                ?> </p>
                     </div>
                 </div>
 
 
                 <div class="row">
-                    <div class="col-md-6 nation">
-                    <span>DOB/Age &nbsp;&nbsp;&nbsp; :</span> <p><?php
-                echo date("d/m/Y",strtotime($patient_data["birthday"]));?> (47 Y)</p>
-                    </div>
+
                     <div class="col-md-6 nation">
                     <span>Passport  &nbsp;&nbsp;&nbsp; :</span> <p><?php echo $patient_data["passport_num"];?></p>
+                    </div>
+
+                    <div class="col-md-6 nation">
+                    <span>Location &nbsp;&nbsp;&nbsp; :</span> <p><?php echo $patient_data["nationality"];?></p>
                     </div>
                 </div>
 
                 <div class="row pt-2 pb-2">
+
                     <div class="col-md-6 nation">
-                    <span>Location &nbsp;&nbsp;&nbsp; :</span> <p><?php echo $patient_data["nationality"];?></p>
+                        <span>Reg Date  &nbsp;&nbsp;&nbsp; :</span> <p><?php
+                        $registr_date = explode("T",$patient_data["reg_date"]);
+                        echo date("d/m/Y",strtotime($registr_date[0])) . "  " ;
+                        echo date("h:i A",strtotime($registr_date[1]));
+                        
+                        ;?></p>
                     </div>
-                    <div class="col-md-6 nation">
-                    <span>Reg Date  &nbsp;&nbsp;&nbsp; :</span> <p><?php
-                $registr_date = explode("T",$patient_data["reg_date"]);
-                echo date("d/m/Y",strtotime($registr_date[0])) . "  " ;
-                echo date("h:i A",strtotime($registr_date[1]));
-                
-                ;?></p>
+
+                                        <div class="col-md-6 nation">
+                    <span>Report Date &nbsp; :</span> <p><?php 
+                                $report_date = explode("T",$patient_data["repo_date"]);
+                                echo date("d/m/Y",strtotime($report_date[0])) . "  " ;
+                                echo date("h:i A",strtotime($report_date[1]));?></p>
                     </div>
                 </div>
 
@@ -94,20 +107,15 @@ $user_id = explode("-",$id);
                     <div class="col-md-6 nation">
                     <span>Ref. by Dr &nbsp;&nbsp;&nbsp; :</span> <p></p>
                     </div>
-                    <div class="col-md-6 nation">
-                    <span>Report Date &nbsp; :</span> <p><?php 
-                                $report_date = explode("T",$patient_data["repo_date"]);
-                                echo date("d/m/Y",strtotime($report_date[0])) . "  " ;
-                                echo date("h:i A",strtotime($report_date[1]));?></p>
-                    </div>
+
                 </div>
             </div>
         </div>
         <div class="col-md-2">
             <div class="data_right">
                 <!-- <img src="img/data/6.png" alt="qr"> -->
-                <a href="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Fmisrinternationallab.center/results.php?id=<?php echo rand(0,1000000)."-".$patient_data['id']."-".rand(0,1000).rand(0,100);?>%2F&choe=UTF-8" download="filename" style="width: 100%;height: 100%;">
-                    <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Fmisrinternationallab.center/results.php?id=<?php echo rand(0,1000000)."-".$patient_data['id']."-".rand(0,1000).rand(0,100);?>%2F&choe=UTF-8" alt="W3Schools" width="500" style="width: 100%;height: 100%;" >
+                <a href="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Felsalamlab.com/results.php?id=<?php echo rand(0,1000000)."-".$patient_data['id']."-".rand(0,1000).rand(0,100);?>%2F&choe=UTF-8" download="filename" style="width: 100%;height: 100%;">
+                    <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Felsalamlab.com/results.php?id=<?php echo rand(0,1000000)."-".$patient_data['id']."-".rand(0,1000).rand(0,100);?>%2F&choe=UTF-8" alt="W3Schools" width="500" style="width: 100%;height: 100%;" >
                 </a>
             </div>
         </div>
@@ -189,26 +197,26 @@ $user_id = explode("-",$id);
             <img src="img/data/السلان لاب.png" alt="sig">
         </div>
         <div class="col-md-4">
-            <p style="font-weight: 700;text-align: center;">Approved By <br> Prof.Hala Elsakhawy</p>
+            <p style="font-weight: 700;text-align: center;">Approved By <br> DR.Fatma Abdelhamide</p>
             <img src="img/data/2.png" alt="sig">
         </div>
     </div>
 
-    <!-- <div class="row mt-3">
+    <div class="row mt-4">
         <div class="col-md-6">
-            <img style="display: block;width: 70%;margin: auto;margin-top: 30px;" src="img/data/1.png" alt="data">
+            <img style="display: block;width: 70%;margin: auto;margin-top: 35px;" src="img/اميل.png" alt="data">
         </div>
         <div class="col-md-6">
-            <img style="display: block;width: 30%;margin: auto;" src="img/data/3.png" alt="data">
+            <img style="display: block;width: 70%;margin: auto;" src="img/شهادات.png" alt="data">
         </div>
-    </div> -->
+    </div>
 
-
+<!-- 
     <div class="row mt-3">
         <div class="col-md-12">
             <img style="display: block;width: 60%;margin: auto;margin-top: 30px;" src="img/data/1.png" alt="data">
         </div>
-    </div>
+    </div> -->
 
 
 

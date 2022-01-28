@@ -50,7 +50,8 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
                                               <th>Registration Date</th>
                                               <th>Reporting Date</th>
                                               <th>Image</th>               
-                                              <th>QR Code</th>               
+                                              <th>QR Code</th>      
+                                              <th>PDF Page</th>                        
                                               <th>Update</th>               
                                               <th>Delete</th> 
                                             </tr>
@@ -69,7 +70,8 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
                                               <th>Registration Date</th>
                                               <th>Reporting Date</th>
                                               <th>Image</th>    
-                                              <th>QR Code</th>                
+                                              <th>QR Code</th>     
+                                              <th>PDF Page</th>                          
                                               <th>Update</th>                          
                                               <th>Delete</th> 
                                               </tr>            
@@ -98,6 +100,12 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
                                                                 </a>
                                                         </td>
                                                             
+
+                                                        <td>
+                                                            <a href='patient_data.php?id=<?php echo rand(0,1000000)."-".$patients_data['id']."-".rand(0,1000).rand(0,100);?>'
+                                                            class='btn editbtn btn-primary m-2' style='display: flex;'><i class='bx bxs-edit m-1 '></i> PDF Page</a>                                                        
+                                                        </td>
+
                                                             <?php  
                                                     echo "<td>
                                                     <a href='update_patient.php?id=".$patients_data['id']. "'

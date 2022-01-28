@@ -93,8 +93,6 @@ $last = get_last_patient();
                 
                 $destination = "img/Patients/" . $avatar ;
         
-
-                echo $extention;
                 
                 /*check if info already added*/
         
@@ -199,7 +197,7 @@ $last = get_last_patient();
                     <label for="MRN">MRN</label>
                     <div class="input-group mb-2">
                     <div style="width: 100%;" class="input-group-prepend">
-                      <div class="input-group-text">N1152</div>
+                      <div class="input-group-text">N115</div>
                       <input type="number" class="form-control" value="<?php echo $last["mrn"]+1;?>" id="MRN" 
                           placeholder="Enter MRN" required  max="9999" autocomplete="off"
                           name="MRN">
