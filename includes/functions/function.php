@@ -163,6 +163,19 @@ function getData_with_id($table,$id){
 }
 
 
+/*
+==========================
+  get patient with id
+==========================
+*/
+
+function getPatient_with_admin($table,$id){
+    global $con;
+    $stmt = $con->prepare("SELECT * FROM $table WHERE admin_id = ?");
+    $stmt->execute(array($id));
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $rows;
+}
 
 
 /*
@@ -210,4 +223,19 @@ function editAdmin($name,$email, $hashed, $reg_state,$id){
         toastr.success('Great ,successfully: Edited Admin .')
     </script>";
     header("Refresh:3;url=all_admins.php"); 
+}
+
+
+/*
+==========================
+  count_patients
+==========================
+*/
+
+function count_patients($id){
+    global $con;
+    $stmt = $con->prepare("SELECT * From patients Where admin_id = ?");
+    $stmt->execute(array($id));
+    $rows = $stmt->fetchAll();
+return $rows;
 }

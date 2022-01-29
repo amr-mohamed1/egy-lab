@@ -4,7 +4,7 @@ session_start();
 $page="dash";
 require "init.php";
 if(isset($_SESSION['role'])){
-$patients=getAllData('patients');
+$patients=getPatient_with_admin('patients',$_SESSION["userid"]);
 require './layout/topNav.php';
 
 $all_users = getAllData("members")
@@ -24,7 +24,7 @@ $all_users = getAllData("members")
             
                   <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Egypt International Lab</h1>
+                        <h1 class="mt-4">Elsalam Lab</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
@@ -78,7 +78,7 @@ $all_users = getAllData("members")
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">All Patient</div>
+                                    <div class="card-body">Your Patient</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="./all_patients.php">Go To All Patient</a>
                                         <div class="small text-white"><i class="far fa-hand-point-right"></i></div>
@@ -91,7 +91,7 @@ $all_users = getAllData("members")
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                    Branch Members
+                                    Your Patients
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -113,7 +113,9 @@ $all_users = getAllData("members")
                                               <th>QR Code</th>               
                                               <th>PDF Page</th>               
                                               <th>Update</th>               
+                                              <?php  if($_SESSION['role'] == "1"){  ?>                         
                                               <th>Delete</th> 
+                                              <?php } ?>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -132,8 +134,10 @@ $all_users = getAllData("members")
                                               <th>Image</th>    
                                               <th>QR Code</th>      
                                               <th>PDF Page</th>                         
-                                              <th>Update</th>                          
+                                              <th>Update</th> 
+                                              <?php  if($_SESSION['role'] == "1"){  ?>                         
                                               <th>Delete</th> 
+                                              <?php } ?>
                                               </tr>            
                                         </tfoot>
                                         <tbody>
@@ -169,10 +173,11 @@ $all_users = getAllData("members")
                                                     echo "<td>
                                                     <a href='update_patient.php?id=".$patients_data['id']. "'
                                                     class='btn editbtn btn-primary m-2' style='display: flex;'><i class='bx bxs-edit m-1 '></i> Edit</a> " . "</td>";
+                                                    if($_SESSION['role'] == "1"){ 
                                                     echo "<td>
                                                     <a href='delete.php?from=patients&id=".$patients_data['id']. "'
                                                     class='btn deletebtn btn-danger m-2' style='display: flex;'><i class='bx bxs-user-minus m-1'></i> Delete</a> " . "</td>";
-                                        
+                                                    }
                                 
                                             echo "</td>";?>
                                             </tr>

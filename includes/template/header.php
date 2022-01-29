@@ -8,6 +8,7 @@
     <!-- <link rel="icon" type="image/png" href="./img/fav.ico"> -->
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="<?php echo $cssPath?>bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo $cssPath?>all.min.css">
     <link rel="stylesheet" href="<?php echo $cssPath?>semantic.min.css">

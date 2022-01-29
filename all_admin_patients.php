@@ -4,16 +4,21 @@ session_start();
 $style="updateMember.css";
 include "init.php";
 if(isset($_SESSION['role'])){
+    if(isset($_GET['id']) && is_numeric($_GET['id'])){
+        $id =(int)$_GET['id'];
 require './layout/topNav.php';
-if($_SESSION['role'] == "1"){ 
-$patients=getAllData('patients');
-}elseif($_SESSION['role'] == "0"){
-$patients=getPatient_with_admin('patients',$_SESSION["userid"]);
-}
+$patients=getPatient_with_admin('patients',$id);
 /*if(!isset($_SESSION['username'])){
 echo "<div class='alert alert-danger'>you can not see this page id not exist</div>";
     header("refresh:5;url=index.html");
     exit();}*/?>
+    <style>
+        .fixed-table-toolbar{
+            width:0px;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+    </style>
 <div id="layoutSidenav">     
     <?php 
       require './layout/sidNav.php';
@@ -39,9 +44,15 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                                <div id="toolbar" class="select">
+                                        <select style="display: none;" class="form-control">
+                                        </select>
+                                </div>
+                                <table class="table table-bordered text-center" data-show-export="true"
+                                    data-toolbar="#toolbar" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
+                                              <th>Admin Name</th>
                                               <th>Name</th>
                                               <th>Date Of Birth</th>
                                               <th>Result</th>
@@ -51,18 +62,17 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
                                               <th>MRN</th>
                                               <th>Visit Code</th>
                                               <th>Gender</th>
-                                              <th>Registration Date</th>
-                                              <th>Reporting Date</th>
+                                              <th>Added Date</th>
                                               <th>Image</th>               
                                               <th>QR Code</th>      
                                               <th>PDF Page</th>                        
                                               <th>Update</th>               
-                                              <?php  if($_SESSION['role'] == "1"){  ?>                         
                                               <th>Delete</th> 
-                                              <?php } ?>                                            </tr>
+                                              </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
+                                              <th>Admin Name</th>
                                               <th>Name</th>
                                               <th>Date Of Birth</th>
                                               <th>Result</th>
@@ -72,19 +82,18 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
                                               <th>MRN</th>
                                               <th>Visit Code</th>
                                               <th>Gender</th>
-                                              <th>Registration Date</th>
-                                              <th>Reporting Date</th>
+                                              <th>Added Date</th>
                                               <th>Image</th>    
                                               <th>QR Code</th>     
                                               <th>PDF Page</th>                          
                                               <th>Update</th>                          
-                                              <?php  if($_SESSION['role'] == "1"){  ?>                         
                                               <th>Delete</th> 
-                                              <?php } ?>                                              </tr>            
+                                              </tr>            
                                         </tfoot>
                                         <tbody>
                                            <?php foreach($patients as $patients_data){
                                             echo"<tr>";
+                                                    echo "<td>".  getData_with_id("admins",$patients_data['admin_id'])["username"]  	."</td>";
                                                     echo "<td>".  $patients_data['patient_name']  	."</td>";
                                                     echo "<td>".  $patients_data['birthday']      	."</td>";
                                                     echo "<td>".  $patients_data['result']     		."</td>";
@@ -94,8 +103,7 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
                                                     echo "<td>". "N1152" . $patients_data['mrn'] ."</td>";
                                                     echo "<td>". "N2021102405" . $patients_data['visit_code'] ."</td>";
                                                     echo "<td>".  $patients_data['gender'] ."</td>";
-                                                    echo "<td>".  $patients_data['reg_date'] . "</td>";
-                                                    echo "<td>".  $patients_data['repo_date'] . "</td>";?>
+                                                    echo "<td>".  $patients_data['time'] . "</td>";?>
 
                                                         <td>
                                                             <img src="./img/Patients/<?php echo $patients_data['img'];?>" width="100" height="100">
@@ -116,11 +124,9 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
                                                     echo "<td>
                                                     <a href='update_patient.php?id=".$patients_data['id']. "'
                                                     class='btn editbtn btn-primary m-2' style='display: flex;'><i class='bx bxs-edit m-1 '></i> Edit</a> " . "</td>";
-                                                    if($_SESSION['role'] == "1"){ 
                                                     echo "<td>
                                                     <a href='delete.php?from=patients&id=".$patients_data['id']. "'
                                                     class='btn deletebtn btn-danger m-2' style='display: flex;'><i class='bx bxs-user-minus m-1'></i> Delete</a> " . "</td>";
-                                                    }
                                 
                                             echo "</td>";?>
                                             </tr>
@@ -141,6 +147,9 @@ echo "<div class='alert alert-danger'>you can not see this page id not exist</di
 
 <?php
 require_once "./includes/template/footer.php";
+}else{
+    header("Location:siggin.php");
+}
 }else{
     header("Location:siggin.php");
 }

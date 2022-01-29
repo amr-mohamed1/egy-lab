@@ -34,7 +34,15 @@
                                     <a class="nav-link" href="<?php echo "all_patients.php";?>">Edit / Delete Patients</a>
                                 </nav>
                             </div>
-                            
+
+                            <?php if($_SESSION['role'] == "1"){ ?>
+                            <div class="sb-sidenav-menu-heading">Admins Patients</div>
+                            <a class="nav-link" href="<?php echo "analysis.php";?>">
+                                <div class="sb-nav-link-icon"><i class="far fa-analytics"></i></div>
+                                Admins Patients
+                            </a>
+                            <?php } ?>
+
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
